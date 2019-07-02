@@ -15,35 +15,33 @@ class Artist
   end
 
   def paintings
-    Paintings.all.select {|painting| painting.artist == self}
+    Painting.all.select {|painting| painting.artist == self}
   end
 
-    def galleries
+  def galleries
       self.paintings.map {|painting| painting.gallery}
-    end
+  end
 
-    def cities
+  def cities
       self.galleries.map {|gallery| gallery.cities}
-    end
+  end
 
-    def self.total_experience
-        self.all.sum {|artist| years_experience}
-    end
+  def self.total_experience
+        self.all.sum {|artist| artist.years_experience}
+  end
 
-    def self.most_prolific
+  def self.most_prolific
+    # binding.pry
       self.all.map do |artist|
         a = artist.years_experience
         b = artist.paintings.count
-        b/a
-      end
-      
-    end
+         b/a.to_f
+        # binding.pry
+      end.max
+  end
 
     def create_painting(title, price, gallery)
-      gallery
-     painting = Painting.new(title, price, gallery)
-     artist.paintings = self
+     painting = Painting.new(title, price, gallery, self)
     end
-
 
 end

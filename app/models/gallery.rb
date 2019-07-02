@@ -1,6 +1,6 @@
 class Gallery
 
-  attr_reader :name, :city, :gallery, :artist
+  attr_reader :name, :city
 @@all = []
   def initialize(name, city)
     @name = name
@@ -13,19 +13,22 @@ class Gallery
   end
 
   def paintings
-      self.all.select {|gallery| gallery.painting == self}
+    # binding.pry
+   Painting.all.select {|painting| painting.gallery == self}
   end
 
-  def artist
+  def artists
     self.paintings.map {|painting| painting.artist}
   end
 
   def artist_names
-    self.artist.map {|artist| artist.name}
+    self.artists.map {|artist| artist.name}
   end
 
   def most_expensive_painting
-    self.paintings.map {|painting| painting.price}.max
+    price = self.paintings.map {|painting| painting.price}.max
+  a =   self.paintings.find {|painting| painting.price == price}
+  a.title
   end
 
 
