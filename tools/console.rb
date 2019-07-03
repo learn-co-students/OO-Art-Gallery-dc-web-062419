@@ -24,7 +24,10 @@ sally.create_painting("p4", 600, women)
 # puts Artist.most_prolific
 # puts men.paintings
 
-puts baby.most_expensive_painting
+# puts baby.most_expensive_painting
+
+p Artist.most_prolific
+p john
 
 
 
