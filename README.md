@@ -45,7 +45,7 @@ An artist can, of course, have many paintings. Paintings can only be in one gall
     * Returns an `instance` of the artist with the highest amount of paintings per year of experience.
 
   * `Artist#create_painting`
-    * Given the arguments of `title`, `price` and `gallery`, creates a new painting belonging to that artist
+    * Given the arguments of `title`, `price` and `gallery`,creates a new painting belonging to that artist
 
 **PAINTING**
 
