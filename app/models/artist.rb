@@ -43,8 +43,16 @@ class Artist
   # * `Artist.most_prolific`
   #   * Returns an `instance` of the artist with the highest amount of paintings per year of experience.
   def self.most_prolific
-    most_prolific = nil
-    
+    most_prolific_rate = 0
+    prolific_artist = nil
+      self.all.each do |artist|
+        artist_rate = artist.paintings.size.to_f / artist.years_experience.to_f
+        if artist_rate > most_prolific_rate
+          most_prolific_rate = artist_rate
+          prolific_artist = artist
+        end
+      end
+    prolific_artist
   end
 
   # * `Artist#create_painting`

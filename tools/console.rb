@@ -1,10 +1,10 @@
 require_relative '../config/environment.rb'
 require 'pry'
 
-wiley = Artist.new("Kehinde Wiley", 20)
-dali = Artist.new("Salvador Dali", 30)
-kahlo = Artist.new("Frida Kahlo", 40)
-sherald = Artist.new("Amy Sherald", 10)
+wiley = Artist.new("Kehinde Wiley", 2)
+dali = Artist.new("Salvador Dali", 7)
+kahlo = Artist.new("Frida Kahlo", 5)
+sherald = Artist.new("Amy Sherald", 3)
 
 gallery1 = Gallery.new("Dolly Gallery", "Nashville")
 gallery2 = Gallery.new("The Harum Collection", "Mount Pleasant")
@@ -29,8 +29,13 @@ puts "Painting.total_price is a sum of all the prices"
 puts Painting.total_price == 120000
 puts "Artist.experience sums everyone's years of experience"
 puts Artist.total_experience == 100
+puts "Amy Sherald has 2 paintings in this made-up world"
+puts sherald.paintings.size == 2
 
+puts "Amy Sherald is the most prolific artist in this made-up world"
+puts Artist.most_prolific == sherald
 
-binding.pry
+puts "The most expensive painting in the Harum Collection is by Frida Kahlo"
+puts gallery2.most_expensive_painting == painting5
 
 puts "Bob Ross rules."

@@ -1,3 +1,4 @@
+require 'pry'
 class Gallery
 
   attr_reader :name, :city
@@ -9,29 +10,28 @@ class Gallery
     @city = city
     self.class.all << self
   end
-
-  # * `Gallery.all`
   #   * Returns an `array` of all the galleries
   def self.all
     @@all
   end
-
-  # * `Gallery#paintings`
   #   * Returns an `array` of all paintings in a gallery
   def paintings
-    Painting.all.select { |painting| painting.gallery == self }
+    Painting.all.select { |painting| painting.gallery == self.name }
   end
 
-  # * `Gallery#artists`
   #   * Returns an `array` of all artists that have a painting in a gallery
   def artists
     self.paintings.map { |painting| painting.artist }
   end
 
-  # * `Gallery#artist_names`
   #   * Returns an `array` of the names of all artists that have a painting in a gallery
+  def artist_names
+    self.artists { |artist| artist.name }.uniq
+  end
 
-  # * `Gallery#most_expensive_painting`
+  def most_expensive_painting
   #   * Returns an `instance` of the most expensive painting in a gallery
+    self.paintings.max_by { |painting| painting.price }
+  end
 
 end
